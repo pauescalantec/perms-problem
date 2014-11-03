@@ -8,9 +8,10 @@
 //
 
 #include <iostream>
+using namespace std;
 
 int main() {
     
-    //3
-    
+    cout << "A" << endl;
+    return 0;
 }
