@@ -35,9 +35,9 @@ long long int sumMatrix(int a, int b){
 /*
  * (void) writeMatrix
  *
- * Recursive method to find the median of two sorted
- * arrays of the same size. Returns the average median
- * since 2n is always an even number of elements.
+ * Method to write the matrix with its inversion values.
+ * The row represents the "n" in the (1..n) array and the 
+ * column represents the number of exact k inversions.
  *
  */
 void writeMatrix(){
@@ -72,6 +72,7 @@ int main() {
     // case loop
     while (n || inversions) {
         
+        // accessing the number of inversions from 1 to n
         cout << mat[n][inversions] << endl;
         
         cin >> n >> inversions;
