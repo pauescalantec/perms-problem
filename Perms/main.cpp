@@ -10,8 +10,72 @@
 #include <iostream>
 using namespace std;
 
+#define ROWS 19
+#define COLUMNS 201
+
+// global matrix declaration
+long long int mat[ROWS][COLUMNS];
+
+/*
+ * (long long int) sumMatrix
+ *
+ * Method to to return the sum of the previous row
+ * and column of the globally declared matrix
+ *
+ */
+long long int sumMatrix(int a, int b){
+    long long int sum = 0, aux = a;
+    for (int col = b; col >= 0 && a >= 1; col--) {
+        sum += mat[aux-1][col];
+        a--;
+    }
+    return sum;
+}
+
+/*
+ * (void) writeMatrix
+ *
+ * Recursive method to find the median of two sorted
+ * arrays of the same size. Returns the average median
+ * since 2n is always an even number of elements.
+ *
+ */
+void writeMatrix(){
+    for (int i = 0; i < ROWS; i++) {
+        for (int j = 0; j < COLUMNS; j++) {
+            mat[i][j] = 0;
+        }
+    }
+    mat[1][0] = 1;
+    mat[2][0] = 1;
+    mat[2][1] = 1;
+    for (int i = 3; i < ROWS; i++) {
+        for (int j = 0; j <= COLUMNS; j++) {
+            mat[i][j] = sumMatrix(i,j);
+            if (mat[i][j] == 0) break;
+        }
+    }
+}
+
+/* -----------------------------  MAIN FUNCTION ----------------------------- */
+
 int main() {
+    // variable declaration
+    int n, inversions;
     
-    cout << "A" << endl;
+    // fills matrix
+    writeMatrix();
+    
+    // user input
+    cin >> n >> inversions;
+    
+    // case loop
+    while (n || inversions) {
+        
+        cout << mat[n][inversions] << endl;
+        
+        cin >> n >> inversions;
+    } // end case loop
+    
     return 0;
 }
